@@ -14,10 +14,11 @@ This project has used the provided resources (demo project) in tutorial for java
 2. queries.sql cannot be run. It just give a better view for people to see all the query we used
 
 ## How to run the project
-1. run the table_creation.sql to load the data into the database
-2. type "cd Project" in the terminal to go to the project folder
-3. type sh remote-start.sh to run the project
-4. click the link to open the local host
+1. log into Oracle with username: sqlplus ora_cwl@stu and password: a<student number>
+2. run the table_creation.sql to load the data into the database
+3. type "cd Project" in the terminal to go to the project folder
+4. type sh remote-start.sh to run the project
+5. click the link to open the local host
 
 ### Functionality
 Required queries:\
