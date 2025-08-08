@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- This meta tag ensures that the website renders correctly across different device sizes, enhancing mobile responsiveness. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link to the external CSS stylesheet. Uncomment if you wish to customize or add styling. -->
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Database Application</title>
+</head>
+
+<body>
+    <div class="topnav" id="myTopnav">
+        <a class="navItem" href="index.html">Home</a>
+        <a class="navItem active" href="filter-data.html">Filter Data</a>
+        <a class="navItem" href="view-analytics.html">View Analytics</a>
+    </div>
+
+    <div class="body">
+        <!-- Display the current status of the database connection. -->
+        <h6>Database Connection Status:
+            <!-- An in-line placeholder to display connection status. -->
+            <span id="dbStatus"> </span>
+            <!-- A loading GIF, will be hided once get the status. -->
+            <img id="loadingGif" class="loading-gif" src="loading_100px.gif" alt="Loading...">
+        </h6>
+
+        <!-- PROJECTION QUERY -->
+        <div class="card">
+            <h2> View Data </h2>
+            <i>View any table from the database by specifying the table of choice and the fields to display.</i>
+            <br><br>
+            <form id="projection">
+                <label id="tableOptionsLabel"> Table: </label>
+                <select name="prjTableSelection" id="tableOptions">
+                    <option disabled selected value>please make a selection</option>
+                </select>
+
+                <br><br>
+                <label id="attributeOptionsLabel"> Please choose fields to include: </label>
+                <div id="projectionAttribute"></div>
+                <br><br>
+                <button id="prjSubmitButton" type="submit" disabled> View </button>
+            </form>
+            <br>
+            <div id="projResultMessage"></div>
+            <br>
+            <div class="table-container">
+                <table id="prjTable" border="1">
+                    <thead>
+                        <tr id="prjHeaderRow">
+                            <!--Table head for projection table -->
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SELECTION QUERY -->
+        <div class="card">
+            <h2>Filter Influencers</h2>
+            <i>Find influencers of interest by filtering your search.</i>
+            <h3>Match ALL Filters</h3>
+            <form id="filterForm">
+                <div id="conditionContainer">
+                    <div class="condition-row">
+                        <select class="attribute">
+                            <option value="influencerID">Influencer ID</option>
+                            <option value="influencerName">Influencer Name</option>
+                            <option value="location">Location</option>
+                            <option value="age">Age</option>
+                            <option value="niche">Niche</option>
+                        </select>
+                        <select class="operator">
+                            <option value="=">=</option>
+                            <option value="<"><</option>
+                            <option value=">">></option>
+                            <option value="LIKE">LIKE</option>
+                        </select>
+                        <br><br>
+                        <input type="text" class="value" placeholder="Enter value">
+                    </div>
+                    <br>
+                </div>
+                <br>
+                <button type="button" id="addConditionBtn">+</button>
+                <br><br>
+                <button type="submit">Search</button>
+            </form>
+            <br>
+            <div id="filterResultMessage"></div>
+            <br>
+            <div class="table-container">
+                <table id="FilteredInfluencer" border="1" style="visibility: hidden">
+                    <thead>
+                        <tr>
+                            <th>Influencer ID</th>
+                            <th>Influencer Name</th>
+                            <th>Location</th>
+                            <th>Age</th>
+                            <th>Niche</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <br>
+            <hr>
+            <h3>Match ANY Filters</h3>
+            <form id="filterFormOR">
+                <div id="conditionContainerOR">
+                    <div class="condition-row">
+                        <select class="attribute">
+                            <option value="influencerID">Influencer ID</option>
+                            <option value="influencerName">Influencer Name</option>
+                            <option value="location">Location</option>
+                            <option value="age">Age</option>
+                            <option value="niche">Niche</option>
+                        </select>
+                        <select class="operator">
+                            <option value="=">=</option>
+                            <option value="<"><</option>
+                            <option value=">">></option>
+                            <option value="LIKE">LIKE</option>
+                        </select>
+                        <br><br>
+                        <input type="text" class="value" placeholder="Enter value">
+                    </div>
+                    <br>
+                </div>
+                <br>
+                <button type="button" id="addConditionBtnOR">+</button>
+                <br><br>
+                <button type="submit">Search</button>
+            </form>
+            <br>
+            <div id="filterResultMessageOR"></div><br>
+            <div class="table-container">
+                <table id="FilteredInfluencerOR" border="1" style="visibility: hidden">
+                    <thead>
+                        <tr>
+                            <th>Influencer ID</th>
+                            <th>Influencer Name</th>
+                            <th>Location</th>
+                            <th>Age</th>
+                            <th>Niche</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===================================================================================== -->
+    <!-- External JavaScript file that contains the functionality/logic for the operations above. -->
+    <script src="script_filter.js"></script>
+</body>
+
+</html>

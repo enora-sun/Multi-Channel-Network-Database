@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- This meta tag ensures that the website renders correctly across different device sizes, enhancing mobile responsiveness. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link to the external CSS stylesheet. Uncomment if you wish to customize or add styling. -->
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Database Application</title>
+</head>
+
+<body>
+    <div class="topnav" id="myTopnav">
+        <a class="navItem" href="index.html">Home</a>
+        <a class="navItem" href="filter-data.html">Filter Data</a>
+        <a class="navItem active" href="view-analytics.html">View Analytics</a>
+    </div>
+
+    <div class="body">
+        <!-- Display the current status of the database connection. -->
+        <h6>Database Connection Status:
+            <!-- An in-line placeholder to display connection status. -->
+            <span id="dbStatus"> </span>
+            <!-- A loading GIF, will be hided once get the status. -->
+            <img id="loadingGif" class="loading-gif" src="loading_100px.gif" alt="Loading...">
+        </h6>
+
+        <!-- JOIN QUERY -->
+        <div class="card">
+            <h2>Production Cost</h2>
+            <i> Find the advertisement type of posts with production cost above threshold. </i>
+            <br><br>
+            <form id="joinQuery">
+                Production Cost threshold: <input type="number" id="costThreshold" step="0.01" placeholder="Enter cost ($)">
+                <br><br>
+
+                <button type="submit">Go</button> <br>
+            </form>
+            <br>
+            <div id="joinResultMessage"></div>
+            <br>
+            <div class="table-container"></div>
+            <table id="joinTable" border="1" style="visibility: hidden">
+                <thead>
+                    <tr id="joinTableHeaderRow">
+                        <!--Table head for join table -->
+                        <th>Advertisement Type</th>
+                        <th>Production Cost</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- AGGREGATION WITH GROUP BY QUERY -->
+        <div class="card">
+            <h2>Platform Demographics</h2>
+            <i>Find the average age of influencers on each platform.</i>
+            <br><br>
+            <button id="groupByAggBtn" type="submit">Go</button>
+            <br>
+            <div id="groupByAggResultMessage"></div>
+            <br>
+            <div class="table-container">
+                <table id="groupByAggTable" border="1" style="visibility: hidden">
+                    <thead>
+                        <tr>
+                            <th>Platform</th>
+                            <th>Average Influncer Age</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- dynamically load table contents -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- AGGREGATION WITH HAVING QUERY -->
+        <div class="card">
+            <h2>Post Engagement Rate</h2>
+            <i>Find the average post engagement rate for each category of advertised product with engagement rates above the lower bound.</i>
+            <br><br>
+            <i>We define engagement rate as (likes + comments)/views.</i>
+            <br><br>
+            <form id="aggregationWithHaving">
+                Lower bound: <input type="number" id="engagementRateInput" step="any"
+                    placeholder="Enter Engagement Rate (e.g. 0.3)">
+                <br><br>
+
+                <button type="submit">Go</button>
+            </form>
+            <br>
+            <div id="aggHavingResultMessage"></div>
+            <br>
+            <div class="table-container">
+                <table id="aggWithHavingTable" border="1" style="visibility: hidden">
+                    <thead>
+                        <tr>
+                            <th>Product Category</th>
+                            <th>Average Engagement Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- dynamically load table contents -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- NESTED AGGREGATION WITH GROUP BY QUERY -->
+        <div class="card">
+            <h2>Popular Sponsored Influencers</h2>
+            <i>Find the account(s) with the most sponsored posts under brand deals.</i>
+            <br><br>
+            <button id="nestedAggBtn" type="submit">Go</button>
+            <br>
+            <div id="nestedAggResultMessage"></div>
+            <br>
+            <div class="table-container">
+                <table id="nestedAggTable" border="1" style="visibility: hidden">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Platform</th>
+                            <th>Number of Brand Deal Posts</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- dynamically load table contents -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- DIVISION QUERY -->
+        <div class="card">
+            <h2>Influencers With Reach</h2>
+            <i>Find the IDs of all influencers who have accounts on every platform.</i>
+            <br><br>
+            <button id="divisionBtn" type="submit">Go</button>
+            <br>
+            <div id="divideAggResultMessage"></div>
+            <br>
+            <div class="table-container">
+                <table id="divisionTable" border="1" style="visibility: hidden">
+                    <thead>
+                        <tr>
+                            <th>Influencer ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- dynamically load table contents -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================================== -->
+    <!-- External JavaScript file that contains the functionality/logic for the operations above. -->
+    <script src="script_learner.js"></script>
+</body>
+
+</html>
